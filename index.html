@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>schema</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        filter: invert(0%);
+        overflow: hidden;
+        background-color: #C0C0C0;
+      }
+      #box {
+        position: absolute;
+        top: 80%;
+        left: 20%;
+        width: 60%;
+        height: 6%;
+        opacity: 0.3;
+        transition: all 0.5s;
+      }
+      #box:hover {
+        opacity: 1;
+        transition: all 0.5s;
+      }
+      #inputbox {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 6vh;
+        border-radius: 25px;
+        border: none;
+        outline: none;
+        background-color: rgba(255,255,255,0.8)
+      }
+      #btnleft {
+        position: absolute;
+        width: 10vh;
+        height: 10vh;
+        border-radius: 0px 10vw 0px 0px;
+        border: none;
+        outline: none;
+        opacity: 0.6;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(255,255,255,0.8)
+      }
+      #btnright {
+        position: absolute;
+        width: 10vh;
+        height: 10vh;
+        border-radius: 10vw 0px 0px 0px;
+        border: none;
+        outline: none;
+        opacity: 0.6;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(255,255,255,0.8)
+      }
+    </style>
+  </head>
+  <body id="body">
+    <div id="box">
+      <input type="text" placeholder="id" id="inputbox" onchange="replace()">
+    </div>
+          <input type="button" id="btnleft" onclick="back()">
+      <input type="button" id="btnright" onclick="forward()">
+    <script>
+    var classid = "te2b"
+    Date.prototype.getWeek = function() {
+        var onejan = new Date(this.getFullYear(), 0, 1);
+        return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
+    }
+
+    var weekNumber = (new Date()).getWeek();
+
+    var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    var now = new Date();
+      
+    var image = document.createElement("img");
+    var imageParent = document.getElementById("body");
+    curweek = (new Date()).getWeek();
+    image.id = "id";
+    image.className = "class";
+    image.src = "http://www.novasoftware.se/ImgGen/schedulegenerator.aspx?format=png&schoolid=55700/sv-se&type=-1&id="+classid+"&period=&week="+curweek+"&mode=0&head=0&clock=0&foot=0&day=0&width="+document.body.clientWidth+"&height="+document.documentElement.clientHeight;
+    document.getElementById("body").appendChild(image);
+    function replace() {
+      if (document.getElementById('inputbox').value) {
+        classid = document.getElementById('inputbox').value;
+      }
+      image.src = "http://www.novasoftware.se/ImgGen/schedulegenerator.aspx?format=png&schoolid=55700/sv-se&type=-1&id="+classid+"&period=&week="+curweek+"&mode=0&head=0&clock=0&foot=0&day=0&width="+document.body.clientWidth+"&height="+document.documentElement.clientHeight;
+    document.getElementById("body").replaceChild(image, document.getElementById("body").childNodes[0]);
+      document.getElementById('inputbox').value = "";
+    }
+    window.addEventListener('resize', () => {replace();});
+    function back() {
+      --curweek;
+      document.getElementById('inputbox').placeholder = curweek;
+      document.getElementById('inputbox').value = "";
+      replace();
+    }
+      function forward() {
+      ++curweek;
+        document.getElementById('inputbox').placeholder = curweek;
+        document.getElementById('inputbox').value = "";
+      replace();
+      }
+    </script>
+  </body>
+</html>
