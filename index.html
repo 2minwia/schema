@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
   <head>
-    <title>schema</title>
+    <title>Schema</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#FFFFFF"/>
+    <meta name="description" content="Skolschema">
     <style>
       body {
         margin: 0;
@@ -83,6 +87,7 @@
     curweek = (new Date()).getWeek();
     image.id = "id";
     image.className = "class";
+    image.alt = "schema";
     image.src = "https://images.weserv.nl/?url=" + encodeURIComponent("http://www.novasoftware.se/ImgGen/schedulegenerator.aspx?format=png&schoolid=55700/sv-se&type=-1&id="+classid+"&period=&week="+curweek+"&mode=0&head=0&clock=0&foot=0&day=0&width="+document.body.clientWidth+"&height="+document.documentElement.clientHeight);
     document.getElementById("body").appendChild(image);
     function replace() {
