@@ -83,13 +83,13 @@
     curweek = (new Date()).getWeek();
     image.id = "id";
     image.className = "class";
-    image.src = "http://www.novasoftware.se/ImgGen/schedulegenerator.aspx?format=png&schoolid=55700/sv-se&type=-1&id="+classid+"&period=&week="+curweek+"&mode=0&head=0&clock=0&foot=0&day=0&width="+document.body.clientWidth+"&height="+document.documentElement.clientHeight;
+    image.src = "https://images.weserv.nl/?url=" + encodeURIComponent("http://www.novasoftware.se/ImgGen/schedulegenerator.aspx?format=png&schoolid=55700/sv-se&type=-1&id="+classid+"&period=&week="+curweek+"&mode=0&head=0&clock=0&foot=0&day=0&width="+document.body.clientWidth+"&height="+document.documentElement.clientHeight);
     document.getElementById("body").appendChild(image);
     function replace() {
       if (document.getElementById('inputbox').value) {
         classid = document.getElementById('inputbox').value;
       }
-      image.src = "http://www.novasoftware.se/ImgGen/schedulegenerator.aspx?format=png&schoolid=55700/sv-se&type=-1&id="+classid+"&period=&week="+curweek+"&mode=0&head=0&clock=0&foot=0&day=0&width="+document.body.clientWidth+"&height="+document.documentElement.clientHeight;
+    image.src = "https://images.weserv.nl/?url=" + encodeURIComponent("http://www.novasoftware.se/ImgGen/schedulegenerator.aspx?format=png&schoolid=55700/sv-se&type=-1&id="+classid+"&period=&week="+curweek+"&mode=0&head=0&clock=0&foot=0&day=0&width="+document.body.clientWidth+"&height="+document.documentElement.clientHeight);
     document.getElementById("body").replaceChild(image, document.getElementById("body").childNodes[0]);
       document.getElementById('inputbox').value = "";
     }
