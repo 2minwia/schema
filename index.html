@@ -127,6 +127,16 @@
         document.getElementById('inputbox').value = "";
       replace();
       }
+      async function registerSW() {
+        if ('serviceWorker' in navigator) {
+          try {
+            await navigator.serviceWorker.register('./sw.js');
+          } catch (e) {
+            console.log("haha it failed");
+          }
+        } 
+      }
+      registerSW();
     </script>
   </body>
 </html>
