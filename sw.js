@@ -14,7 +14,7 @@ self.addEventListener('install', async e => {
 });
 
 self.addEventListener('activate', e => {
-  self.client.claim();
+  self.clients.claim();
 });
 
 self.addEventListener('fetch', async e => {
