@@ -1,4 +1,4 @@
-const cacheName = 'schema-v6';
+const cacheName = 'schema-v7';
 const staticAssets = [
   './',
   './192x192.png',
